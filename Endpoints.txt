@@ -1,0 +1,6 @@
+GET http://SERVER/ordenadito/users
+GET http://SERVER/ordenadito/users/email@gmail.com
+
+POST http://SERVER/ordenadito/adduser
+
+DELETE http://SERVER/ordenadito/user/email@gmail.com
