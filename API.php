@@ -101,9 +101,18 @@ class API
             else if(isset($obj))
                 {
                     $dbPDO = new DB();   
-                    $dbPDO->addUser( $obj );
+                    $respuesta = $dbPDO->addUser( $obj );
+
+                    if($respuesta == 1)
+                    {
+                        $this->response(422,"Error","El correo ya existe");    
+                    }
+                    else{
+
+                    
                     $this->response(200,"Exito","Registro Agregado con éxito"); 
                   //  $this->response(200, "Hecho", $obj);                        
+                        }       
                 }
                 else{
                     $this->response(422,"Error","La propiedad no está definida");
@@ -129,7 +138,7 @@ class API
                 else if(isset($obj))
                            {
                            $dbPDO = new DB();  
-                           $dbPDO->updateUser($_GET['email'], $obj);
+                          $respuesta = $dbPDO->updateUser($_GET['email'], $obj);
                            $this->response(200,"Exitoso","Registro Actualizado");      
                        //    $this->response(200,"Exitoso",$_GET['id'].$obj);                     
                            }else
